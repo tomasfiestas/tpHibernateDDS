@@ -18,10 +18,12 @@ public class Demo {
 
             // 1) Creador concreto (usa la tabla base 'creador' vía SINGLE_TABLE)
             Agencia agencia = new Agencia();
+            agencia.setNombre("Agencia Ganadora");
             em.persist(agencia);
 
             // 2) Producto que pertenece a esa agencia
             Producto prod = new Producto();
+            prod.setNombre("Producto Demostración Snack");
             prod.setAgencia(agencia);
             em.persist(prod);
 
@@ -47,6 +49,7 @@ public class Demo {
 
             // 4) Actor
             Actor actor = new Actor();
+            actor.setNombre("Juan Pérez");
             em.persist(actor);
 
             // 5) Postulación que une Actor con Búsqueda

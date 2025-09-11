@@ -12,5 +12,17 @@ public abstract class Creador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nombre", length = 200, nullable = true) // ponelo en true si ya tenés filas
+    private String nombre;
+
+
     public Long getId() { return id; }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

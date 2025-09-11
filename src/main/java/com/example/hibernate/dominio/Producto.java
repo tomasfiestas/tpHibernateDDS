@@ -11,6 +11,9 @@ public class Producto {
     @Column(name = "producto_id")
     private Long producto_id;
 
+    @Column(name = "nombre", length = 200, nullable = true)
+    private String nombre;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "agencia_id",
@@ -28,5 +31,13 @@ public class Producto {
 
     public void setAgencia(Agencia agencia) {
         this.agencia = agencia;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
