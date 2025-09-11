@@ -1,5 +1,5 @@
 package com.example.hibernate.dominio;
 
-public enum tipoBusqueda {
+public enum TIPOBUSQUEDA {
     CORTO, PELICULA, COMERCIAL
 }

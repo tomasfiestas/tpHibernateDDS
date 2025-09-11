@@ -9,15 +9,11 @@ import java.util.List;
 @DiscriminatorValue("DIRECTOR")
 public class Director extends Creador{
 
-    @OneToMany
+    @OneToMany(mappedBy = "creador") // inversa de Busqueda.creador (ManyToOne)
     private List<Busqueda> busquedas;
 
-    public List<Busqueda> getBusquedas() {
-        return busquedas;
+    public List<Busqueda> getBusquedas() { return busquedas; }
+    public void setBusquedas(List<Busqueda> busquedas) { this.busquedas = busquedas; }
     }
 
-    public void setBusquedas(List<Busqueda> busquedas) {
-        this.busquedas = busquedas;
-    }
 
-}

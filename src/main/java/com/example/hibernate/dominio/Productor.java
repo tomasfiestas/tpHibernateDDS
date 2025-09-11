@@ -10,15 +10,10 @@ import java.util.List;
 @DiscriminatorValue("PRODUCTOR")
 public class Productor extends Creador{
 
-    @OneToMany
+    @OneToMany(mappedBy = "creador") // inversa de Busqueda.creador
     private List<Busqueda> busquedas;
 
-    public List<Busqueda> getBusquedas() {
-        return busquedas;
-    }
-
-    public void setBusquedas(List<Busqueda> busquedas) {
-        this.busquedas = busquedas;
-    }
+    public List<Busqueda> getBusquedas() { return busquedas; }
+    public void setBusquedas(List<Busqueda> busquedas) { this.busquedas = busquedas; }
 
 }

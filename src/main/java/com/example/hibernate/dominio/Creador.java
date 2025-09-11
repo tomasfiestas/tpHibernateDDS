@@ -3,12 +3,14 @@ package com.example.hibernate.dominio;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "creador")                        // ← fuerza minúsculas
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_creador")
 public abstract class Creador {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public String getId() { return id; }
+    public Long getId() { return id; }
 }
