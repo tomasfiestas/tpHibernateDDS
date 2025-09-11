@@ -1,13 +1,18 @@
 package com.example.hibernate.dominio;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "productos")
 public class Producto {
+
     @ManyToOne
     private Agencia agencia;
 
+    @Id
     private String producto_id;
 
     public String getProducto_id() {

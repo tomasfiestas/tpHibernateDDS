@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Agencia {
-
-    @Id
-    private String id;
+@DiscriminatorValue("AGENCIA")
+public class Agencia extends Creador {
 
     @OneToMany
     private List<Busqueda> busquedas;
@@ -30,11 +28,4 @@ public class Agencia {
         this.busquedas = busquedas;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }

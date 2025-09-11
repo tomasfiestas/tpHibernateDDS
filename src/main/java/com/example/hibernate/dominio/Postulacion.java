@@ -11,7 +11,6 @@ public class Postulacion {
     @Id
     private String postulacion_id;
 
-
     @ManyToOne
     private Actor usuario;
 

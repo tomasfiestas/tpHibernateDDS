@@ -1,19 +1,28 @@
 package com.example.hibernate.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Busqueda {
+
+    @Id
     private String busqueda_id;
     private GENEROPERSONA generoPersona;
     private tipoBusqueda tipoBusqueda;
     private GENERO generoObra;
-    @ManyToOne
-    private CreadorBusqueda creadorBusqueda;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "creador_id", nullable = false)
+    private Creador creadorBusqueda;
     private Integer edad;
+
+    @ElementCollection
+    @CollectionTable(
+            name = "busqueda_requisitos",
+            joinColumns = @JoinColumn(name = "busqueda_id", nullable = false)
+    )
+    @Column(name = "requisito", nullable = false, length = 255)
     private List<String> requisitos;
     private String tipoRenumeracion;
     private String localizacion;
@@ -22,6 +31,9 @@ public class Busqueda {
 
     @OneToMany(mappedBy = "busqueda")
     private List<Postulacion> postulantes;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
 
 
@@ -63,14 +75,6 @@ public class Busqueda {
 
     public void setGeneroObra(GENERO generoObra) {
         this.generoObra = generoObra;
-    }
-
-    public CreadorBusqueda getCreadorBusqueda() {
-        return creadorBusqueda;
-    }
-
-    public void setCreadorBusqueda(CreadorBusqueda creadorBusqueda) {
-        this.creadorBusqueda = creadorBusqueda;
     }
 
     public List<String> getRequisitos() {
@@ -127,5 +131,13 @@ public class Busqueda {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Creador getCreadorBusqueda() {
+        return creadorBusqueda;
+    }
+
+    public void setCreadorBusqueda(Creador creadorBusqueda) {
+        this.creadorBusqueda = creadorBusqueda;
     }
 }

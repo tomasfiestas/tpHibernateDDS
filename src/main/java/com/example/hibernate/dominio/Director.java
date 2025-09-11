@@ -1,14 +1,16 @@
 package com.example.hibernate.dominio;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
 @Entity
-public class Director {
+@DiscriminatorValue("DIRECTOR")
+public class Director extends Creador{
+
     @OneToMany
     private List<Busqueda> busquedas;
-
-    private String director_id;
 
     public List<Busqueda> getBusquedas() {
         return busquedas;
@@ -18,11 +20,4 @@ public class Director {
         this.busquedas = busquedas;
     }
 
-    public String getDirector_id() {
-        return director_id;
-    }
-
-    public void setDirector_id(String director_id) {
-        this.director_id = director_id;
-    }
 }
